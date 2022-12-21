@@ -1,0 +1,44 @@
+body{
+  min-height: 100vh;
+  
+  background-color: #161719;
+  color: #fff;
+  font-size: 0.8rem;
+  
+  }
+.sub-menu-content{
+  background-color: #1E2127 !important;
+  color: #ffeddf;
+
+}
+
+.menu-item:hover{
+  background-color: rgb(60, 22, 99) !important;
+}
+
+.menu-anchor:hover{
+  background-color: rebeccapurple !important;
+  background: rgb(2,0,36);
+  
+  color:white;
+}
+.logoContainer{
+  margin-top: 50vh;
+  bottom: 0;
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+}
+.logoContainer img {
+  
+  
+  width: 150px;
+  
+
+}
+
+.mainDiv{
+  width: 100%;
+  height: 100%;
+}

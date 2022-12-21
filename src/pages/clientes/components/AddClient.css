@@ -1,0 +1,46 @@
+.mainDivAddClient{
+    margin: 15px;   
+}
+
+.inputStyle{
+    background-color: #505967;
+    border: none;
+    color: #fff;
+    
+    
+}
+.inputStyle:focus{
+        color:#fff;
+        background-color:#66758d;
+    
+}
+
+.inputStyle::placeholder {
+    color: rgb(200, 200, 200);
+    
+  }
+
+  .boxLabel{
+    border:none;
+
+    background-color: none;
+  }
+
+
+
+form{
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #464E5B;
+}
+
+.btnSave{
+    background-color: none ;
+    background: none;
+    border: none;
+    color: cornflowerblue;
+}
+
+.btnSave:hover{
+    color: aquamarine;
+}

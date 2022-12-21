@@ -1,0 +1,18 @@
+.divMainDashBoard{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.cardX{
+    
+    background-color: #505967;
+    padding: 15px;
+    margin: 15px;
+    border: none;
+    
+    
+}
