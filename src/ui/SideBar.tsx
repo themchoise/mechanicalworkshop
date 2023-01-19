@@ -4,9 +4,11 @@ import logonoBg from "../static/logonobg.png";
 import { Link, Routes, Route } from 'react-router-dom';
 import Clientes from '../pages/clientes/Clientes';
 import { Container } from "react-bootstrap";
-import { FiUserPlus } from "react-icons/fi";
-import Homepage from "../pages/home/HomePage";
+import { FiUserPlus, FiTool } from "react-icons/fi";
 import Dashboard from "../pages/dashboard/Dashboard";
+import Servicios from '../pages/servicios/Servicios';
+import Orden from "../pages/orden/Orden";
+
 
 
 function SideBar({ children }:any) {
@@ -37,13 +39,15 @@ function SideBar({ children }:any) {
         <button onClick={() => collapseSidebar()}>Collapse</button>
      
         <Menu>
+        <MenuItem routerLink={ <Link to="/">Dashboard</Link>}> Dashboard</MenuItem>
           <MenuItem icon={<FiUserPlus/>} routerLink={ <Link to="/Clientes">Clientes</Link>}> Clientes</MenuItem>
-          <MenuItem icon={<FiUserPlus/>} routerLink={ <Link to="/">Clientes</Link>}> Servicio</MenuItem>
+          <MenuItem icon={<FiUserPlus/>} routerLink={ <Link to="/Servicios">Servicios</Link>}> Servicios</MenuItem>
+          <MenuItem icon={<FiTool/>} routerLink={ <Link to="/Orden">Orden</Link>}> Orden</MenuItem>
           <SubMenu label="Informacion">
             <MenuItem> Pie charts </MenuItem>
             <MenuItem> Line charts </MenuItem>
           </SubMenu>
-          <MenuItem> Documentation</MenuItem>
+          
           <MenuItem> Calendar</MenuItem>
           <MenuItem> E-commerce</MenuItem>
         </Menu>
@@ -68,6 +72,8 @@ function SideBar({ children }:any) {
       <Routes>
         <Route path="/Clientes" element={<Clientes />} />
         <Route path="/DashBoard" element={<Dashboard/>} />
+        <Route path="/Servicios" element={<Servicios/>} />
+        <Route path="/Orden" element={<Orden/>} />
         <Route path="/" element={<Dashboard/>} />
       </Routes>
       </Container>

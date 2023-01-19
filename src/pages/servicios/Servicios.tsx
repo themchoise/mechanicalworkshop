@@ -1,18 +1,16 @@
-import './Clientes.css'
-import Table from "../../globalcomponents/table/Table"
+import './Servicios.css'
 import { useState } from 'react';
-import AddClient from './components/AddClient';
-import { Button } from 'react-bootstrap';
+import AddService from './components/AddService/AddService';
+
 import { AiOutlineUserAdd } from "react-icons/ai";
 
 interface IShowComponent {
   show:boolean
   }
 
-function Clientes(){
+function Servicios(){
 
   const [show, setShow] = useState<IShowComponent>({show:false});
-
 
 
   const handleShow = () => {
@@ -26,7 +24,7 @@ function Clientes(){
   return (
     <>
     <h1>
-    Clientes
+    Servicios
     </h1>
     <hr></hr>
     <div className='titleAdd'>
@@ -38,12 +36,11 @@ function Clientes(){
       size="25"
       />
     </button>
-    <h6>Alta cliente</h6>
+    <h6>Alta Servicio</h6>
     </div>
-  
     
     {show.show&&(<>
-    <AddClient></AddClient>
+    <AddService></AddService>
     </>)}
 
 
@@ -54,4 +51,4 @@ function Clientes(){
 }
 
 
-export default Clientes
+export default Servicios
