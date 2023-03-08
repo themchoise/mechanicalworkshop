@@ -1,0 +1,7 @@
+.disabledElement input{
+    pointer-events: none;
+}
+.disabledElement input{
+    background-color: #475468;
+    
+}

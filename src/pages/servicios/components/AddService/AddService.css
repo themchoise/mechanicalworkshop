@@ -37,7 +37,7 @@ form{
 .btnSave{
     background-color: none ;
     background: none;
-    border: 2px solid salmon;
+    border: none;
     margin-top: 5px;
     color: cornflowerblue;
 

@@ -8,8 +8,14 @@ import { FiUserPlus, FiTool } from "react-icons/fi";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Servicios from '../pages/servicios/Servicios';
 import Orden from "../pages/orden/Orden";
+import { Presupuesto } from "../pages/presupuesto/Presupuesto";
 
-
+/*
+ <SubMenu label="Informacion">
+            <MenuItem> Pie charts </MenuItem>
+            <MenuItem> Line charts </MenuItem>
+          </SubMenu>
+*/
 
 function SideBar({ children }:any) {
    const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } = useProSidebar();
@@ -43,13 +49,7 @@ function SideBar({ children }:any) {
           <MenuItem icon={<FiUserPlus/>} routerLink={ <Link to="/Clientes">Clientes</Link>}> Clientes</MenuItem>
           <MenuItem icon={<FiUserPlus/>} routerLink={ <Link to="/Servicios">Servicios</Link>}> Servicios</MenuItem>
           <MenuItem icon={<FiTool/>} routerLink={ <Link to="/Orden">Orden</Link>}> Orden</MenuItem>
-          <SubMenu label="Informacion">
-            <MenuItem> Pie charts </MenuItem>
-            <MenuItem> Line charts </MenuItem>
-          </SubMenu>
-          
-          <MenuItem> Calendar</MenuItem>
-          <MenuItem> E-commerce</MenuItem>
+          <MenuItem icon={<FiTool/>} routerLink={ <Link to="/Presupuesto">Presupuesto</Link>}> Presupuesto</MenuItem>
         </Menu>
         <div className="logoContainer">
           <img src={logonoBg}></img>
@@ -74,6 +74,7 @@ function SideBar({ children }:any) {
         <Route path="/DashBoard" element={<Dashboard/>} />
         <Route path="/Servicios" element={<Servicios/>} />
         <Route path="/Orden" element={<Orden/>} />
+        <Route path="/Presupuesto" element={<Presupuesto/>} />
         <Route path="/" element={<Dashboard/>} />
       </Routes>
       </Container>

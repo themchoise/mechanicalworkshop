@@ -34,21 +34,21 @@ form{
     background-color: #464E5B;
 }
 
+
 .btnSave{
     background-color: none ;
     background: none;
-    border: 2px solid salmon;
+    border: none;
     margin-top: 5px;
     color: cornflowerblue;
 
 }
 
 .btnSave:hover{
-    color: aquamarine;
+    color: a    quamarine;
 }
 
 p{
-
     color: orange;
     font: 0.5em sans-serif;
     margin: 0%;

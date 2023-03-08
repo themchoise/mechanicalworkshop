@@ -12,38 +12,44 @@ import {
 } from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
 import { AiFillSave } from "react-icons/ai";
-import Bikes from '../../../dbtest/bikestes.json'
+import Bikes from "../../../dbtest/bikestes.json";
 
+function handleModelSelect(filterModelsRecived: string) {
+  if (filterModelsRecived == "") {
+    return (
+      <FormRB.Select size="sm">
+        <option>Seleccionar Modelo</option>
+        {Bikes.map((x, index) => (
+          <option value={index}>{x.Modelo}</option>
+        ))}
+      </FormRB.Select>
+    );
+  } else {
+    let result = Bikes.filter((x) =>
+      x.Modelo.toLowerCase()
+        .trim()
+        .includes(filterModelsRecived.toLowerCase().trim())
+    );
 
-function handleModelSelect (filterModelsRecived:string){
-
-  if ( filterModelsRecived == ''){
-    return (  <FormRB.Select size="sm">
-    <option>Seleccionar Modelo</option>
-    {Bikes.map((x, index)=>(
-      <option value={index}>{x.Modelo}</option>
-    ))}
-  </FormRB.Select> )
-  }else{
-    let result = Bikes.filter(x => x.Modelo.toLowerCase().trim().includes(filterModelsRecived.toLowerCase().trim()));
-
-    return (  <FormRB.Select size="sm">
-    <option>Seleccionar Modelo</option>
-    {result.map((x, index)=>(
-      <option value={index}>{x.Modelo}</option>
-    ))}
-  </FormRB.Select> )
+    return (
+      <FormRB.Select size="sm">
+        <option>Seleccionar Modelo</option>
+        {result.map((x, index) => (
+          <option value={index}>{x.Modelo}</option>
+        ))}
+      </FormRB.Select>
+    );
   }
-
- 
 }
 
 function AddClient() {
+  const [filterModels, setFilterModels] = useState("");
+  const [typeSelected, setTypeSelected] = useState(0);
 
-  const [filterModels, setFilterModels] = useState('');
-
- 
-
+  const handleTypeSelect = (e: any) => {
+    let target: number = Number(e.target.value);
+    setTypeSelected(target);
+  };
 
   return (
     <Container
@@ -125,35 +131,95 @@ function AddClient() {
             <h6>Datos del Vehiculo</h6>
             <hr />
 
-            <FormRB.Select size="sm">
-              <option>Seleccionar Marca</option>
-              <option value="1">KTM</option>
-              <option value="2">Bajaj</option>
-              <option value="3">Hero</option>
+            <FormRB.Select size="sm" onChange={(e) => handleTypeSelect(e)}>
+            
+              <option key="1" value="1">
+                KTM
+              </option>
+              <option key="2" value="2">
+                Otra
+              </option>
             </FormRB.Select>
-           
 
-       
-            <InputGroup size="sm" className="mb-3 mt-2">
-        
-            <p className="mt-1 me-1">Filtro</p>
-              <FormRB.Control
-                className="inputStyle"
-                placeholder="Filtrar Modelo"
-                onChange={(e) => (setFilterModels(e.target.value))}
-                type="text"
-                aria-describedby="basic-addon2"
-              />
-            </InputGroup>
+            {typeSelected !== 2 && (
+              <InputGroup size="sm" className="mb-3 mt-2">
+                
+                <FormRB.Control
+                  className="inputStyle"
+                  placeholder="Filtrar Modelo"
+                  onChange={(e) => setFilterModels(e.target.value)}
+                  type="text"
+                  aria-describedby="basic-addon2"
+                />
+              </InputGroup>
+            )}
 
-           {handleModelSelect(filterModels)}
+            {typeSelected === 2 && (
+              <>
+               <InputGroup size="sm" className="mb-3 mt-3">
+               <FormRB.Control
+                 className="inputStyle"
+                 placeholder="Marca"
+                 type="text"
+                 aria-describedby="basic-addon2"
+               />
+             </InputGroup>
 
-          <h1>
-            <button type="submit" className="btnSave">
-              <AiFillSave />
-              <sub>Guardar</sub>
-            </button>
-            </h1> 
+              <InputGroup size="sm" className="mb-3 mt-3">
+                <FormRB.Control
+                  className="inputStyle"
+                  placeholder="Modelo"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                />
+              </InputGroup>
+              </>
+            )}
+
+            {typeSelected !== 2 && handleModelSelect(filterModels)}
+
+            <InputGroup size="sm" className="mb-3 mt-3">
+                <FormRB.Control
+                  className="inputStyle"
+                  placeholder="NroChasis"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                />
+              </InputGroup>
+
+              <InputGroup size="sm" className="mb-3 mt-3">
+                <FormRB.Control
+                  className="inputStyle"
+                  placeholder="NroMotor"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                />
+              </InputGroup>
+
+              <InputGroup size="sm" className="mb-3 mt-3">
+                <FormRB.Control
+                  className="inputStyle"
+                  placeholder="Kilometros"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                />
+              </InputGroup>
+
+              <InputGroup size="sm" className="mb-3 mt-3">
+                <FormRB.Control
+                  className="inputStyle"
+                  placeholder="Patente"
+                  type="text"
+                  aria-describedby="basic-addon2"
+                />
+              </InputGroup>
+
+            <h1>
+              <button type="submit" className="btnSave">
+                <AiFillSave />
+                <sub>Guardar</sub>
+              </button>
+            </h1>
           </Form>
         </Formik>
       </Row>
