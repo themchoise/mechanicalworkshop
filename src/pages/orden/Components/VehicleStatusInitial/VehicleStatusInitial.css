@@ -1,9 +1,29 @@
 .borderR{
-    border: 2px solid white;
+    border: 1px solid #ff9b53;
 }
 
 .borderNT{
-    border-bottom: 2px solid white;
-    border-right: 2px solid white;
-    border-left: 2px solid white;
+    border-bottom: 1px solid #ff9b53;
+    border-right: 1px solid #ff9b53;
+    border-left: 1px solid #ff9b53;
+}
+
+
+.borderRight{
+    border-right: 1px solid #ff9b53;
+}
+
+.inputUnitState{
+    height: 100%;
+    width: 100%;
+    background: none;
+    background-color: #505967;
+    border: none;
+    color: white;
+}
+
+.containerUniStatus{
+    margin-top: 15px;
+    
+    
 }

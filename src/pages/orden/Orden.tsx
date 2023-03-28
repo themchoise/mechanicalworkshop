@@ -5,6 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { AiFillSave } from "react-icons/ai";
 import ListGroup from "react-bootstrap/ListGroup";
 import VehicleStatusInitial from "./Components/VehicleStatusInitial/VehicleStatusInitial";
+import styled from 'styled-components';
 
 function Orden() {
   return (
@@ -12,10 +13,13 @@ function Orden() {
       fluid
       style={{
         marginTop: "15px",
+     
+        
       }}
     >
       <hr />
 
+      <Container fluid>
       <Formik
         initialValues={{
           firstName: "",
@@ -27,7 +31,7 @@ function Orden() {
           alert(JSON.stringify(values, null, 2));
         }}
       >
-        <Form>
+        <Form >
           <Row xs={1} md={2} className="justify-content-md-center">
             <Col>
               <h6>Listado de Clientes</h6>
@@ -104,6 +108,12 @@ function Orden() {
         label="Reparacion"
       
       />
+          <FormRB.Check 
+        
+        type="switch"
+        label="Presupuesto"
+      
+      />
               <hr></hr>
               <InputGroup>
                 <FormRB.Control
@@ -125,7 +135,7 @@ function Orden() {
           </Row>
         </Form>
     </Formik>
-
+    </Container>
     <VehicleStatusInitial/>
     </Container>
     
