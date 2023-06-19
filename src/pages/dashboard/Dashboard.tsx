@@ -24,7 +24,7 @@ function Dashboard(){
         <Card.Body>
           <Card.Title>Clientes</Card.Title>
           <Card.Text>
-           Aca se van a mostrar la cantidad de clientes
+        Aca se van a mostrar la cantidad de clientes
           </Card.Text>
         </Card.Body>
         <Card.Footer>

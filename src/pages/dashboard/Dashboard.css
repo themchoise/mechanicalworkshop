@@ -8,11 +8,13 @@
 
 
 .cardX{
-    
     background-color: #505967;
     padding: 15px;
     margin: 15px;
     border: none;
-    
-    
+    font-size: 15px;
+}
+
+.cardX p{
+font-size: 15px;
 }

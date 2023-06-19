@@ -25,10 +25,14 @@ function Clientes(){
  
   return (
     <>
+    
     <h1>
     Clientes
     </h1>
-    <hr></hr>
+    
+    <hr/>
+    <Table></Table>
+    <hr/>
     <div className='titleAdd'>
     <button
     className='btnAdd'

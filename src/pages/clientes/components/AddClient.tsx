@@ -1,7 +1,7 @@
 import "./AddClient.css";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field  } from "formik";
 import {
   Button,
   Form as FormRB,
@@ -13,6 +13,13 @@ import {
 import InputGroup from "react-bootstrap/InputGroup";
 import { AiFillSave } from "react-icons/ai";
 import Bikes from "../../../dbtest/bikestes.json";
+
+
+interface MyFormValues {
+  firstName: string;
+}
+
+
 
 function handleModelSelect(filterModelsRecived: string) {
   if (filterModelsRecived == "") {
@@ -50,7 +57,7 @@ function AddClient() {
     let target: number = Number(e.target.value);
     setTypeSelected(target);
   };
-
+  const initialValues: MyFormValues = { firstName: '' };
   return (
     <Container
       fluid
@@ -59,37 +66,26 @@ function AddClient() {
       }}
     >
       <hr />
-      <Row xs={1} md={2} className="justify-content-md-center">
+      <Row style={{padding:'35px'}} className="justify-content-md-center">
+      
         <Formik
-          initialValues={{
-            firstName: "",
-            lastName: "",
-            email: "",
-          }}
+        initialValues={initialValues}
           onSubmit={async (values) => {
-            await new Promise((r) => setTimeout(r, 500));
-            alert(JSON.stringify(values, null, 2));
+          alert(JSON.stringify(values, null, 2));
           }}
         >
           <Form>
-            <InputGroup size="sm" className="mb-3 ">
-              <FormRB.Control
-                className="inputStyle"
-                placeholder="Nombre"
-                type="text"
-                aria-label="Nombre"
-                aria-describedby="basic-addon1"
-              />
+            <Row>
+              <Col>
+              <hr />
+            <h6>Datos del Humanoide</h6>
+            <hr />
+              <InputGroup size="sm"  className="mb-3 ">
+             <Field name="firstName"   className="inputStyle fieldStyle"  type="text"placeholder="Nombre"/>
             </InputGroup>
 
             <InputGroup size="sm" className="mb-3">
-              <FormRB.Control
-                className="inputStyle"
-                placeholder="Apellido"
-                type="text"
-                aria-label="Apellido"
-                aria-describedby="basic-addon1"
-              />
+            <Field name="Apellido"   className="inputStyle fieldStyle"  type="text"placeholder="Apellido"/>
             </InputGroup>
 
             <InputGroup size="sm" className="mb-3">
@@ -113,7 +109,7 @@ function AddClient() {
             <InputGroup size="sm" className="mb-3">
               <FormRB.Control
                 className="inputStyle"
-                placeholder="Email"
+                placeholder="Sexo"
                 type="text"
                 aria-describedby="basic-addon2"
               />
@@ -126,8 +122,10 @@ function AddClient() {
                 aria-label="With textarea"
               />
             </InputGroup>
+              </Col>
 
-            <hr />
+              <Col>
+              <hr />
             <h6>Datos del Vehiculo</h6>
             <hr />
 
@@ -220,6 +218,13 @@ function AddClient() {
                 <sub>Guardar</sub>
               </button>
             </h1>
+              </Col>
+
+            </Row>
+
+          
+
+           
           </Form>
         </Formik>
       </Row>

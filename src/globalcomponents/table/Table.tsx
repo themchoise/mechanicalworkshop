@@ -3,6 +3,13 @@ import testdata from './testdata.js';
 import * as React from 'react';
 import FilterComponent from './FilterComponent';
 
+import { downloadXLS } from "./DownloadXLSX.js";
+import { ExportComponent } from './ExportComponent';
+
+
+
+
+
 
 const columns:any = [
     {
@@ -19,29 +26,36 @@ const columns:any = [
       name: "Runtime (m)",
       selector: "runtime",
       sortable: true,
-      right: true
+    
     }
   ];
   
 createTheme('solarized', {
     text: {
-      primary: '#268bd2',
-      secondary: '#2aa198',
+      primary: '#FFFFFF',
+    
+    },
+    title:{
+    default:'red'
     },
     background: {
-      default: '#002b36',
+      default: '#343C48'
     },
     context: {
-      background: '#cb4b16',
+      
       text: '#FFFFFF',
     },
     divider: {
       default: '#073642',
     },
+    striped: {
+      default:  '#343b45'
+    },
     action: {
       button: 'rgba(0,0,0,.54)',
       hover: 'rgba(0,0,0,.08)',
       disabled: 'rgba(0,0,0,.12)',
+     
     },
   }, 'dark');
 
@@ -53,7 +67,7 @@ function Table(){
   const [filterText, setFilterText] = React.useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
 
-  
+  const actionsMemo = React.useMemo(() => <ExportComponent onExport={() => downloadXLS(filteredItems)} />, []);
 
 	const subHeaderComponentMemo = React.useMemo(() => {
 		const handleClear = () => {
@@ -76,14 +90,12 @@ function Table(){
         .indexOf(filterText.toLowerCase()) !== -1
   );
 
-  
   return(<div className="App">
      
   <DataTable
-    title="Movies"
     columns={columns}
     fixedHeader
-    
+    actions={actionsMemo}
     data={filteredItems}  
     pagination
     paginationResetDefaultPage={resetPaginationToggle}
@@ -91,6 +103,8 @@ function Table(){
     subHeader
     subHeaderComponent={subHeaderComponentMemo}
     dense
+    striped
+
     
   />
 

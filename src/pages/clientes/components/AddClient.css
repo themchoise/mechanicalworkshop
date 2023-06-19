@@ -27,7 +27,15 @@
   }
 
 
-
+.fieldStyle{
+    padding: 0.25rem 0.5rem;
+    font-size: .875rem;
+    border-radius: 0.25rem;
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+}
 form{
     padding: 15px;
     border-radius: 15px;
