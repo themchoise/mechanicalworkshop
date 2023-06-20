@@ -4,6 +4,7 @@ import { useState } from 'react';
 import AddClient from './components/AddClient';
 import { Button } from 'react-bootstrap';
 import { AiOutlineUserAdd } from "react-icons/ai";
+import AddBike from './components/AddBike';
 
 interface IShowComponent {
   show:boolean
@@ -13,7 +14,14 @@ function Clientes(){
 
   const [show, setShow] = useState<IShowComponent>({show:false});
 
+  const [showBike, setShowBike] = useState<IShowComponent>({show:false});
 
+
+const handleNewBike = (bikeData:any) => {
+  setShowBike({show:!show.show})
+
+
+}
 
   const handleShow = () => {
 
@@ -31,7 +39,7 @@ function Clientes(){
     </h1>
     
     <hr/>
-    <Table></Table>
+    <Table handleNewBike={handleNewBike}></Table>
     <hr/>
     <div className='titleAdd'>
     <button
@@ -46,10 +54,8 @@ function Clientes(){
     </div>
   
     
-    {show.show&&(<>
-    <AddClient></AddClient>
-    </>)}
-
+    {show.show&&(<> <AddClient></AddClient></>) }
+    {showBike.show&&(<> <AddBike></AddBike></>) }
 
     
   

@@ -5,67 +5,76 @@ import FilterComponent from './FilterComponent';
 
 import { downloadXLS } from "./DownloadXLSX.js";
 import { ExportComponent } from './ExportComponent';
+import { Button } from "react-bootstrap";
+import { RiMotorbikeFill } from "react-icons/ri";
 
 
 
-
-
-
-const columns:any = [
-    {
-      name: "Title",
-      selector: "title",
-      sortable: true
-    },
-    {
-      name: "Directior",
-      selector: "director",
-      sortable: true
-    },
-    {
-      name: "Runtime (m)",
-      selector: "runtime",
-      sortable: true,
-    
-    }
-  ];
-  
-createTheme('solarized', {
-    text: {
-      primary: '#FFFFFF',
-    
-    },
-    title:{
-    default:'red'
-    },
-    background: {
-      default: '#343C48'
-    },
-    context: {
-      
-      text: '#FFFFFF',
-    },
-    divider: {
-      default: '#073642',
-    },
-    striped: {
-      default:  '#343b45'
-    },
-    action: {
-      button: 'rgba(0,0,0,.54)',
-      hover: 'rgba(0,0,0,.08)',
-      disabled: 'rgba(0,0,0,.12)',
-     
-    },
-  }, 'dark');
 
   
  
 
-function Table(){
+function Table({handleNewBike}:any){
 
   const [filterText, setFilterText] = React.useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
+
+  
+const columns:any = [
+  {
+    name: "Nombre",
+    selector: "firstName",
+    sortable: true
+  },
+  {
+    name: "Apellido",
+    selector: "lastName",
+    sortable: true
+  },
+  {
+    name: "Sexo",
+    selector: "sex",
+    sortable: true,
+  
+  },
+  {
+  button: true,
+  cell: (row:any) => (
+    <Button className="btnBike" onClick={(e) => {
+      handleNewBike()
+    }}> <RiMotorbikeFill/> </Button>
+  )
+}
+];
+
+createTheme('solarized', {
+  text: {
+    primary: '#FFFFFF',
+  
+  },
+  title:{
+  default:'red'
+  },
+  background: {
+    default: '#343C48'
+  },
+  context: {
+    
+    text: '#FFFFFF',
+  },
+  divider: {
+    default: '#073642',
+  },
+  striped: {
+    default:  '#343b45'
+  },
+  action: {
+    button: 'rgba(0,0,0,.54)',
+    hover: 'rgba(0,0,0,.08)',
+    disabled: 'rgba(0,0,0,.12)',
+   
+  },
+}, 'dark');
 
   const actionsMemo = React.useMemo(() => <ExportComponent onExport={() => downloadXLS(filteredItems)} />, []);
 
