@@ -13,11 +13,11 @@ import {
 import InputGroup from "react-bootstrap/InputGroup";
 import { AiFillSave } from "react-icons/ai";
 import Bikes from "../../../dbtest/bikestes.json";
+import { CustomerInterface } from "../../../interfaces/customerInterface";
+import customerPostData from "../../../api/customer/fetchCustomer";
 
 
-interface MyFormValues {
-  firstName: string;
-}
+
 
 
 
@@ -57,7 +57,7 @@ function AddClient() {
     let target: number = Number(e.target.value);
     setTypeSelected(target);
   };
-  const initialValues: MyFormValues = { firstName: '' };
+  const initialValues: CustomerInterface = { firstname: '', lastname:'',cellphone:0, email:'',sex:'',comment:'' };
   return (
     <Container
       fluid
@@ -71,7 +71,9 @@ function AddClient() {
         <Formik
         initialValues={initialValues}
           onSubmit={async (values) => {
-          alert(JSON.stringify(values, null, 2));
+            customerPostData(values)
+            .then(res => (alert(res)))
+            .catch(err => (alert(err)))
           }}
         >
           <Form>
@@ -81,54 +83,39 @@ function AddClient() {
             <h6>Datos del Humanoide</h6>
             <hr />
               <InputGroup size="sm"  className="mb-3 ">
-             <Field name="firstName"   className="inputStyle fieldStyle"  type="text"placeholder="Nombre"/>
+             <Field name="firstname"   className="inputStyle fieldStyle"  type="text"placeholder="Nombre"/>
             </InputGroup>
 
             <InputGroup size="sm" className="mb-3">
-            <Field name="Apellido"   className="inputStyle fieldStyle"  type="text"placeholder="Apellido"/>
+            <Field name="lastname"   className="inputStyle fieldStyle"  type="text"placeholder="Apellido"/>
             </InputGroup>
 
             <InputGroup size="sm" className="mb-3">
-              <FormRB.Control
-                className="inputStyle"
-                placeholder="Cel"
-                type="number"
-                aria-label="Cel"
-                aria-describedby="basic-addon1"
-              />
+            <Field name="cellphone" value=''   className="inputStyle fieldStyle"  type="number"placeholder="Celular"/>
             </InputGroup>
 
             <InputGroup size="sm" className="mb-3">
-              <FormRB.Control
-                className="inputStyle"
-                placeholder="Email"
-                type="text"
-                aria-describedby="basic-addon2"
-              />
+            <Field name="email"   className="inputStyle fieldStyle"  type="text"placeholder="E-Mail"/>
             </InputGroup>
+
             <InputGroup size="sm" className="mb-3">
-              <FormRB.Control
-                className="inputStyle"
-                placeholder="Sexo"
-                type="text"
-                aria-describedby="basic-addon2"
-              />
+            <Field name="sex"   className="inputStyle fieldStyle"  type="text"placeholder="Sexo"/>
             </InputGroup>
-            <InputGroup>
-              <FormRB.Control
-                as="textarea"
-                placeholder="Comentario"
-                className="inputStyle"
-                aria-label="With textarea"
-              />
+
+            <InputGroup size="sm"  aria-label="With textarea" className="mb-3">
+            <Field name="comment" as="textarea"  className="inputStyle fieldStyle"  type="textarea"placeholder="Comentario"/>
             </InputGroup>
               </Col>
 
             </Row>
 
           
-
-           
+            <h3>
+              <button type="submit" className="btnSave">
+                <AiFillSave />
+                <sub>Guardar</sub>
+              </button>
+            </h3>
           </Form>
         </Formik>
       </Row>

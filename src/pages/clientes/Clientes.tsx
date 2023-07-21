@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import { AiOutlineUserAdd } from "react-icons/ai";
 import AddBike from './components/AddBike';
 
+
 interface IShowComponent {
   show:boolean
   }
@@ -24,7 +25,7 @@ const handleNewBike = (bikeData:any) => {
 }
 
   const handleShow = () => {
-
+   
     setShow({
       show:!show.show
     })
