@@ -3,9 +3,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './VehicleStatusInitial.css'
 import Form from 'react-bootstrap/Form';
+import getCurrentDate from '../../../../helpers/moment';
 
 
 function VehicleStatusInitial() {
+
+  let currDate:string =  getCurrentDate('YYYY-MM-DD') ;
 
   const handleChecks = () => {
     return(<> 
@@ -38,7 +41,7 @@ function VehicleStatusInitial() {
         <h1>ESTADO DE LA UNIDAD</h1>
       <Row  className="borderR">
         <Col sm={3}>FECHA RECEPCION</Col>
-        <Col >  <input className='inputUnitState' type={"date"}/></Col>
+        <Col >  <input className='' value={currDate} type={"date"}/></Col>
       </Row>
       <Row className="borderNT">
         <Col sm className="borderRight text-center">PUNTO DE VERIFICACIÓN </Col>

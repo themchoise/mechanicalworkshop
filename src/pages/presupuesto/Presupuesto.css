@@ -1,0 +1,26 @@
+.budgetContainer{
+    width: 600px;
+    height: 200px;
+}
+
+.containerMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.content-left{
+    display:flex;
+    justify-content: left;
+    align-items: left;
+
+}

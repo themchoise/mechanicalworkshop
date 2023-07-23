@@ -7,7 +7,7 @@ import { downloadXLS } from "./DownloadXLSX.js";
 import { ExportComponent } from './ExportComponent';
 import { Button } from "react-bootstrap";
 import { RiMotorbikeFill } from "react-icons/ri";
-
+import './Table.css'
 
 
 
@@ -40,9 +40,9 @@ const columns:any = [
   {
   button: true,
   cell: (row:any) => (
-    <Button className="btnBike" onClick={(e) => {
+    <Button variant="outline-primary"  className="bntAddBike" onClick={(e) => {
       handleNewBike()
-    }}> <RiMotorbikeFill/> </Button>
+    }}> + <RiMotorbikeFill/> </Button>
   )
 }
 ];
